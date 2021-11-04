@@ -1,0 +1,78 @@
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+            <img src="/theme/dist/img/logo_lpsb.png" class="img-circle elevation-2" alt="Logo">
+        </div>
+        <div class="info">
+            <a href="#" class="d-block">HR Dashboard</a>
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+
+
+        <!-- SidebarSearch Form -->
+
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+
+
+
+                <li id="li_man" class="nav-item">
+                    <a id="menu_man" href="#" class="nav-link">
+                        <i class="nav-icon fas fa-user-tie"></i>
+                        <p>
+                            Manpower
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul id="block_man" class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a id="menu_manpower" href="/Manpower/LPS" class="nav-link">
+                                <i class="fas fa-arrow-circle-right nav-icon"></i>
+                                <p>แสดงกราฟ</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="menu_mantarget" href="/Manpower/Target" class="nav-link">
+                                <i class="fas fa-arrow-circle-right nav-icon"></i>
+                                <p>ขอกำลังคน</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a id="menu_att" href="/Attendance/LPS" class="nav-link">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            Attendance
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                </li>
+                @if (@HttpContextAccessor.HttpContext.Session.GetString("_LevelID") == "2")
+                {
+                    <li class="nav-item">
+                        <a id="menu_import" href="/Import/Index" class="nav-link">
+                            <i class="nav-icon fas fa-file-import"></i>
+                            <p>
+                                Import
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                    </li>
+                }
+            </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+</aside>

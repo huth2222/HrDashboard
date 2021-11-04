@@ -1,0 +1,425 @@
+<input type="hidden" id="timein"/>
+<input type="hidden" id="lost"/>
+<input type="hidden" id="leave"/>
+<input type="hidden" id="time_late"/>
+
+<input type="hidden" id="updateMinDate"/>
+<input type="hidden" id="updateMaxDate"/>
+<input type="hidden" id="updateMaxDateTime"/>
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-2">                
+                <br>
+                <h1>Attendance</h1>
+            </div>
+            <div class="col-2" style="text-align: right;">
+                Group : &nbsp;            
+                <select name="companyGroup" id="companyGroup" class="form-control">
+                                <option value="0">Select</option>
+                                <option value="1">เจ้าหน้าที่</option>
+                                <option value="2">พนักงาน</option>
+                            </select>               
+            </div>
+            <div class="col-2" style="text-align: right;">
+                Zone : &nbsp;            
+                <select name="getZone" id="getZone" class="form-control">
+                                <option value="">Select</option>
+                                <option value="all">All</option>
+                                <option value="Rayong">Rayong</option>
+                                <option value="Chonburi">Chonburi</option>
+                                <option value="Ladkrabang">Ladkrabang</option>
+                            </select>               
+            </div>
+            <div class="col-2" id="div_company" style="text-align: right;">
+                Company : &nbsp;            
+                <select name="company" id="company" class="form-control">
+                                <option value="">Select</option>
+                                <option value="all">All</option>
+                                <option value="LPS">LPS Business group</option>
+                                <option value="LPSS">LPS Subcontract</option>
+                                <option value="LPSH">LPS HEADHUNTER</option>
+                                <option value="L&T">L&T</option>
+                                <option value="STT">STT</option>
+                            </select>           
+            </div>
+            <div class="col-2" style="text-align: right;">
+                Date : &nbsp; 
+                <input id="dateSelect" maxlength="0" type="date" class="form-control" />                         
+            </div>
+            <div class="col-2" style="text-align: right;">
+                <br>
+                <input id="pushSelect" type="button" class="btn btn-primary" value="แสดงกราฟ" style="width: 100%; font-size:16px;"/>                
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+@* <section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-4">
+                <h1>Attendance dashboard</h1>
+            </div>
+            
+            <div class="col-sm-4" style="text-align: right;">
+                Date : &nbsp;
+
+                <input id="dateSelect" maxlength="0" type="date" style="height: 20px;" />
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section> *@
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                <!-- AREA CHART -->
+                <div class="card card-info">
+                    <div class="card-header">
+                        <h3 id="topic_allPercentDay" class="card-title">Daily report</h3>
+
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="div_allPercentDay" style="height: 256px;" class="chart">
+
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+            <div class="col-md-8">
+                <!-- DONUT CHART -->
+                <div class="card card-info">
+                    <div class="card-header">
+                        <h3 class="card-title">Daily reports of each department</h3>
+
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="div_deptListDay" style="height: 256px;" class="chart">
+                            
+                        </div>
+
+                    </div>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <!-- AREA CHART -->
+                <div class="card card-info">
+                    <div class="card-header">
+                        <h3 class="card-title">Daily summary for the past 1 month</h3>
+
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="div_all30Day" class="chart">
+                            
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <!-- AREA CHART -->
+                <div class="card card-info">
+                    <div class="card-header">
+                        <h3 class="card-title">Monthly summary accumulated for the past 1 year</h3>
+
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="div_allYear" class="chart">
+                            
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-6">
+                <!-- AREA CHART -->
+                <div id="card_PersonalLeave" class="card card-secondary">
+                    <div class="card-header">
+                        <h3 class="card-title">Personal leave</h3>
+
+                        <div class="card-tools">
+                            <button  id="btn_c_personalLeave" type="button" class="btn btn-tool" data-card-widget="collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="personalLeave" class="chart">
+                            
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>            
+
+            <div class="col-sm-12 col-md-6 col-lg-6">
+                <!-- AREA CHART -->
+                <div id="card_sickLeave" class="card card-secondary">
+                    <div class="card-header">
+                        <h3 class="card-title">Sick leave</h3>
+
+                        <div class="card-tools">
+                            <button  id="btn_c_sickLeave" type="button" class="btn btn-tool" data-card-widget="collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="sickLeave" class="chart">
+                            
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+
+            </div>
+            <div class="row">
+
+            <div class="col-sm-12 col-md-6 col-lg-6">
+                <!-- AREA CHART -->
+                <div id="card_vacationLeave" class="card card-secondary">
+                    <div class="card-header">
+                        <h3 class="card-title">Annual leave</h3>
+
+                        <div class="card-tools">
+                            <button id="btn_c_vacationLeave" type="button" class="btn btn-tool" data-card-widget="collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="vacationLeave" class="chart">
+                            
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+
+            <div class="col-sm-12 col-md-6 col-lg-6">
+                <!-- AREA CHART -->
+                <div id="card_otherLeave" class="card card-secondary">
+                    <div class="card-header">
+                        <h3 class="card-title">Other leave</h3>
+
+                        <div class="card-tools">
+                            <button id="btn_c_otherLeave" type="button" class="btn btn-tool" data-card-widget="collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="otherLeave" class="chart">
+                            
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-6">
+                <!-- AREA CHART -->
+                <div id="card_late" class="card card-dark">
+                    <div class="card-header">
+                        <h3 class="card-title">Late</h3>
+
+                        <div class="card-tools">
+                            <button id="btn_c_late" type="button" class="btn btn-tool" data-card-widget="collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="late" class="chart">
+                            
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+
+            <div class="col-sm-12 col-md-12 col-lg-6">
+                <!-- AREA CHART -->
+                <div id="card_losts" class="card card-dark">
+                    <div class="card-header">
+                        <h3 class="card-title">Absent</h3>
+
+                        <div class="card-tools">
+                            <button id="btn_c_losts" type="button" class="btn btn-tool" data-card-widget="collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="losts" class="chart">
+                            
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+        </div>
+
+        <!-- /.row -->
+    </div><!-- /.container-fluid -->
+
+
+    <!-- /.card -->
+</section>
+<!-- /.content -->
+
+
+
+
+@section Scripts{ 
+    <script src="~/js/Chart/Attendance/Main/LPS/Main.js"></script>
+    <script src="~/js/Chart/Attendance/Inside/LPS/OverallOfCom_lps.js"></script>
+    <script src="~/js/Chart/Attendance/Inside/LPS/Overall_lps.js"></script>
+
+    <script src="~/js/Chart/Attendance/Inside/LPS/DeptListCom_lps.js"></script>
+    <script src="~/js/Chart/Attendance/Inside/LPS/DeptListAll_lps.js"></script>
+
+    <script src="~/js/Chart/Attendance/Inside/LPS/List30DayCom_lps.js"></script>
+    <script src="~/js/Chart/Attendance/Inside/LPS/List30Day_lps.js"></script>
+
+    <script src="~/js/Chart/Attendance/Inside/LPS/ListYear_lps.js"></script>
+    <script src="~/js/Chart/Attendance/Inside/LPS/ListYearCom_lps.js"></script>
+
+    <script src="~/js/Chart/Attendance/Inside/LPS/LeavePersonal_lps.js"></script>
+    <script src="~/js/Chart/Attendance/Inside/LPS/LeavePersonalCom_lps.js"></script>
+
+    <script src="~/js/Chart/Attendance/Inside/LPS/LeaveSick_lps.js"></script>
+    <script src="~/js/Chart/Attendance/Inside/LPS/LeaveSickCom_lps.js"></script>
+
+    <script src="~/js/Chart/Attendance/Inside/LPS/LeaveVacation_lps.js"></script>
+    <script src="~/js/Chart/Attendance/Inside/LPS/LeaveVacationCom_lps.js"></script>   
+
+    <script src="~/js/Chart/Attendance/Inside/LPS/LeaveOther_lps.js"></script>
+    <script src="~/js/Chart/Attendance/Inside/LPS/LeaveOtherCom_lps.js"></script>
+    
+    <script src="~/js/Chart/Attendance/Inside/LPS/Lost_lps.js"></script>
+    <script src="~/js/Chart/Attendance/Inside/LPS/LostCom_lps.js"></script>
+
+    <script src="~/js/Chart/Attendance/Inside/LPS/Late_lps.js"></script>
+    <script src="~/js/Chart/Attendance/Inside/LPS/LateCom_lps.js"></script>
+    
+
+    
+    
+
+    
+    @* <script src="~/js/Chart/Attendance/Inside/LPS/DeptListDay_lps.js"></script>
+<script src="~/js/Chart/Attendance/Inside/LPS/AllPercentDay_lps.js"></script>
+
+    <script src="~/js/Chart/Attendance/Inside/BMW/LeaveOther_bmw.js"></script>
+    <script src="~/js/Chart/Attendance/Inside/BMW/LeaveVacation_bmw.js"></script>
+    <script src="~/js/Chart/Attendance/Inside/BMW/LeaveSick_bmw.js"></script>
+    <script src="~/js/Chart/Attendance/Inside/BMW/LeavePersonal_bmw.js"></script>
+    <script src="~/js/Chart/Attendance/Inside/BMW/Lost_bmw.js"></script>
+    <script src="~/js/Chart/Attendance/Inside/BMW/Late_bmw.js"></script>
+    
+    <script src="~/js/Chart/Attendance/Inside/BMW/all1Year_bmw.js"></script>
+<script src="~/js/Chart/Attendance/Inside/BMW/All30Day_bmw.js"></script>
+<script src="~/js/Chart/Attendance/Inside/BMW/DeptListDay_bmw.js"></script>
+<script src="~/js/Chart/Attendance/Inside/BMW/AllPercentDay_bmw.js"></script>
+
+<script src="~/js/Chart/Attendance/Main/BMW/AttAuto.js"></script>
+<script src="~/js/Chart/Attendance/Main/BMW/Attendance.js"></script> *@
+
+<script src="~/asset/dist/js/move-top.js"></script>
+    <script src="~/asset/dist/js/easing.js"></script>
+    <script>
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({
+                    scrollTop: $(this.hash).offset().top
+                }, 1000);
+            });
+        });
+
+        $(document).ready(function () {
+
+            $().UItoTop({
+                easingType: 'easeOutQuart'
+            });
+
+        });
+    </script>
+
+}
+

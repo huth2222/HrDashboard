@@ -1,0 +1,122 @@
+<div class="container">
+    <div class="card card-warning">
+        <div class="card-header">
+            <h3 class="card-title">กำหนดเป้าหมายใหม่</h3>
+        </div>
+        <div class="card-body">
+            <form id="pushSubmit" asp-action="Target" asp-controller="Manpower" method="POST">
+                <input type="hidden" id="empInfo" name="empInfo"/>
+                <fieldset class="form-group">
+                    <div class="row">
+                        <legend class="col-form-label col-sm-1 pt-0"><label>ประเภท</label></legend>
+                        <div class="col-sm-10">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="companyGroup" id="group1" value="1"
+                                    checked>
+                                <label class="form-check-label" for="group1">
+                                    เจ้าหน้าที่
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="companyGroup" id="group2" value="2">
+                                <label class="form-check-label" for="group2">
+                                    พนักงาน
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="row">
+                    <div class="form-group col-sm-12 col-md-6 col-lg-2">
+                        <label id="labelZone" for="companyZone">โซน</label>
+                        <select name="companyZone" id="companyZone" class="form-control">
+                            <option value="">Select</option>
+                            <option value="Rayong">Rayong</option>
+                            <option value="Chonburi">Chonburi</option>
+                            <option value="Ladkrabang">Ladkrabang</option>
+                        </select>
+                    </div>
+                    <div id="div_companyName" class="form-group col-sm-12 col-md-6 col-lg-2">
+                        <label id="labelName" for="companyName">ชื่อไซต์งาน</label>
+                        <select id="companys" name="companys" class="form-control">
+                            <option value="">Select</option>
+                            <option value="6">LPS</option>
+                            <option value="8">LPSS</option>
+                            <option value="10014">LPSH</option>
+                            <option value="10018">L&T</option>
+                            <option value="10016">STT</option>
+                        </select>
+                        
+                    </div>
+                    <div class="form-group col-sm-12 col-md-6 col-lg-2">
+                        <label id="labelStartdate" for="startdate">วันที่เริ่มรับคน</label>
+                        <input type="date" name="startdate" id="startdate" class="form-control">
+                    </div>
+                    <div class="form-group col-sm-12 col-md-6 col-lg-3">
+                        <label id="labelEnddate" for="endtart">วันที่สิ้นสุดการรับคน (ถ้ามี)</label>
+                        <input type="date" name="endtart" id="endtart" class="form-control">
+                    </div>
+                    <div class="form-group col-sm-12 col-md-6 col-lg-2">
+                        <label id="targetValue" for="targetValue">จำนวน</label>
+                        <input type="number" name="targetValue" id="targetValue" class="form-control">
+                    </div>
+                    <div class="form-group col-sm-12 col-md-6 col-lg-1">
+                        <label>&nbsp;</label><br>
+                        <button type="button" id="btn_submit" class="btn btn-primary" style="width: 100%;">บันทึก</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- /.card-body -->
+    </div>
+    
+   
+   
+    <div class="row mt-3">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">รายการเป้าหมาย</h3>
+                </div>
+                <!-- ./card-header -->
+                <div class="card-body">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>ชื่อบริษัท</th>
+                                <th>จำนวน</th>
+                                <th style="width: 150px; text-align: center;">เครื่องมือ</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @* <tr>
+                                <td>ASTH</td>
+                                <td>20</td>
+                                <td style="text-align: center;"><a href="#">Edit</a>&nbsp;&nbsp;<a href="#">Delete</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>YTT</td>
+                                <td>10</td>
+                                <td style="text-align: center;"><a href="#">Edit</a>&nbsp;&nbsp;<a href="#">Delete</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>MACO</td>
+                                <td>15</td>
+                                <td style="text-align: center;"><a href="#">Edit</a>&nbsp;&nbsp;<a href="#">Delete</a>
+                                </td>
+                            </tr> *@
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+        </div>
+    </div>
+</div>
+@section Scripts{
+<script src="~/js/Target/form.js"></script>
+}

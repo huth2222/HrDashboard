@@ -1,0 +1,323 @@
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="form-group col-md-2 col-lg-2 col-xl-2">
+                <br>
+                <h1>Manpower</h1>
+            </div>
+            <div class="form-group col-md-2 col-lg-2 col-xl-2" style="text-align: right;">
+                Group : &nbsp;
+                <select name="companyGroup" id="companyGroup" class="form-control">
+                    <option value="0">Select</option>
+                    <option value="1">เจ้าหน้าที่</option>
+                    <option value="2">พนักงาน</option>
+                </select>
+            </div>
+            <div class="form-group col-md-2 col-lg-2 col-xl-2" style="text-align: right;">
+                Zone : &nbsp;
+                <select name="getZone" id="getZone" class="form-control">
+                    <option value="">Select</option>
+                    <option value="all">All</option>
+                    <option value="Rayong">Rayong</option>
+                    <option value="Chonburi">Chonburi</option>
+                    <option value="Ladkrabang">Ladkrabang</option>
+                </select>
+            </div>
+            <div class="form-group col-md-2 col-lg-2 col-xl-2" id="div_company" style="text-align: right;">
+                Company : &nbsp;
+                <select name="company" id="company" class="form-control">
+                    <option value="">Select</option>
+                    <option value="all">All</option>
+                    <option value="LPS">LPS Business group</option>
+                    <option value="LPSS">LPS Subcontract</option>
+                    <option value="LPSH">LPS HEADHUNTER</option>
+                    <option value="L&T">L&T</option>
+                    <option value="STT">STT</option>
+                </select>
+            </div>
+            <div class="form-group col-md-2 col-lg-2 col-xl-2" style="text-align: right;">
+                Date : &nbsp;
+                <input id="dateSelect" maxlength="0" type="date" class="form-control" />
+            </div>
+            <div class="form-group col-md-2 col-lg-2 col-xl-2" style="text-align: right;">
+                <br>
+                <input id="pushSelect" type="button" class="btn btn-primary" value="แสดงกราฟ"
+                    style="width: 100%; font-size:16px;" />
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="form-group col-12 col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+
+
+                <!-- CHART -->
+                <div class="card card-info" style="min-height: 349px;">
+                    <div class="card-header">
+                        <h3 class="card-title">This month's plan</h3>
+
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        @* <div id="mountly" class="chart text-center" style="height: 260px;">
+
+                            </div> *@
+                        <div class="row">
+                            <div id="div_taget" class="form-group col-12 col-xs-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                                <!-- small card -->
+
+                                <div class="small-box bg-info">
+                                    <div class="card-header bg-light text-center">
+                                        <h4>Target</h4>
+                                    </div>
+                                    <div class="inner text-center">
+                                        <label><span style="font-size: 62px;" id="l_target"></span> คน</label>
+                                        @* <div class="progress" style="height: 2px;">
+                                            <div class="progress-bar bg-dark" role="progressbar" id="p_target"></div>
+                                        </div>
+                                        <p><span class="font-percent" id="l_percent_target"></span> &nbsp;
+                                        </p> *@
+                                    </div>
+                                    <div class="icon">
+                                        <i class="fas fa-bullseye"></i>
+                                    </div>
+                                    <span id="more_target" class="small-box-footer">
+                                        More info <i class="fas fa-arrow-circle-right"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <div id="div_emp" class="form-group col-6 col-xs-6 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                                <!-- small card -->
+
+                                <div class="small-box bg-success">
+                                    <div class="card-header bg-light text-center">
+                                        <h4>Employee</h4>
+                                    </div>
+                                    <div class="inner">
+                                        <label><span style="font-size: 30px;" id="l_emp"></span> คน</label>
+                                        <div class="progress" style="height: 2px;">
+                                            <div class="progress-bar bg-dark" role="progressbar" id="p_emp"></div>
+                                        </div>
+                                        <p><span class="font-percent" id="l_percent_emp"></span> ของ Target</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="fas fa-users"></i>
+                                    </div>
+                                    <span id="more_emp" class="small-box-footer">
+                                        More info <i class="fas fa-arrow-circle-right"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <div id="div_vacancy" class="form-group col-6 col-xs-6 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                                <!-- small card -->
+
+                                <div class="small-box bg-warning">
+                                    <div class="card-header bg-light text-center">
+                                        <h4>Vacency</h4>
+                                    </div>
+                                    <div class="inner">
+                                        <label><span style="font-size: 30px;" id="l_vacancy"></span> คน</label>
+                                        <div class="progress" style="height: 2px;">
+                                            <div class="progress-bar bg-dark" role="progressbar" id="p_vacancy"></div>
+                                        </div>
+                                        <p><span class="font-percent" id="l_percent_vacancy"></span> ของ Target
+                                        </p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="fas fa-bath"></i>
+                                    </div>
+                                    <span id="more_vacancy" class="small-box-footer">
+                                        More info <i class="fas fa-arrow-circle-right"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.col (RIGHT) -->
+
+
+            <!-- /.col (RIGHT) -->
+            <div class="form-group col-12 col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                <!-- CHART -->
+                <div class="card card-info">
+                    <div class="card-header">
+                        <h3 class="card-title">Total male and female</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="gender" class="chart" style="height: 260px;">
+
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+        </div>
+        <!-- /.row -->
+    </div><!-- /.container-fluid -->
+</section>
+
+<section class="content">
+    <div id="div_siteDept" class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- BAR CHART -->
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Manpower plan by department</h3>
+
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="siteDept" class="chart" style="height: 260px; overflow: scroll;">
+
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+
+
+
+            </div>
+            <!-- /.col (RIGHT) -->
+        </div>
+        <!-- /.row -->
+
+    </div><!-- /.container-fluid -->
+</section>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- CHART -->
+                <div class="card card-info">
+                    <div class="card-header">
+                        <h3 class="card-title">Past monthly plans</h3>
+
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="listMonth" class="chart" style="height: 260px;">
+
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+
+
+
+            </div>
+            <!-- /.col (RIGHT) -->
+        </div>
+        <!-- /.row -->
+
+    </div><!-- /.container-fluid -->
+</section>
+
+<section class="content">
+    <div id="div_site" class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- BAR CHART -->
+                <div class="card card-info">
+                    <div class="card-header">
+                        <h3 class="card-title">Manpower plan by job site</h3>
+
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="listSite" class="chart" style="height: 260px; overflow: scroll;">
+
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+
+            </div>
+            <!-- /.col (RIGHT) -->
+        </div>
+        <!-- /.row -->
+
+    </div><!-- /.container-fluid -->
+</section>
+
+
+<!-- /.content -->
+
+
+@section Scripts{
+
+<script src="~/asset/dist/yearpicker.js"></script>
+
+<script src="~/js/Chart/Manpower/Inside/LPS/Monthly.js"></script>
+<script src="~/js/Chart/Manpower/Inside/LPS/Gender.js"></script>
+<script src="~/js/Chart/Manpower/Inside/LPS/listMonth.js"></script>
+<script src="~/js/Chart/Manpower/Inside/LPS/listDept.js"></script>
+
+<script src="~/js/Chart/Manpower/Inside/Site/Monthly.js"></script>
+<script src="~/js/Chart/Manpower/Inside/Site/Gender.js"></script>
+<script src="~/js/Chart/Manpower/Inside/Site/listMonth.js"></script>
+<script src="~/js/Chart/Manpower/Inside/Site/ListSite.js"></script>
+
+<script src="~/js/Chart/Manpower/Main/lps.js"></script>
+
+<script>
+    jQuery(document).ready(function ($) {
+        $(".scroll").click(function (event) {
+            event.preventDefault();
+            $('html,body').animate({
+                scrollTop: $(this.hash).offset().top
+            }, 1000);
+        });
+    });
+
+</script>
+}

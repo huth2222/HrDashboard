@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+    @* <meta name="viewport" content="width=device-width, initial-scale=1"> *@
+    
+        @if(HttpContextAccessor.HttpContext.Session.GetString("_Company") == "all"){
+            <title>@ViewData["Title"]  HR Dashboard LPS Group</title>
+        }else {
+            <title>@HttpContextAccessor.HttpContext.Session.GetString("_Company")</title>
+        }
+    <!-- For index -->
+    <meta name="keywords" content="Fashion Hub Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+	SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+    <meta name="description" content="A Bar chart showing the new formatted tooltips feature" />
+    <meta name="robots" content="noindex, nofollow" />
+    <link href="//fonts.googleapis.com/css?family=Elsie+Swash+Caps:400,900" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&amp;display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/theme/plugins/fontawesome-free/css/all.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/theme/dist/css/adminlte.css">
+    
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="~/theme/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+
+    <link rel="stylesheet" href="~/asset/dist/css/totop.css">
+    
+  <!-- ************************************************* -->
+    <link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/yearMountPicker/demo/MonthPicker.min.css" rel="stylesheet" type="text/css" />
+
+    <link rel="stylesheet" href="~/asset/dist/css/OverlayScrollbars.min.css">
+
+    <script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <script src="https://cdn.rawgit.com/digitalBush/jquery.maskedinput/1.4.1/dist/jquery.maskedinput.min.js"></script>
+    
+    <script src="~/assets/yearMountPicker/demo/examples.js"></script>
+    <link href="~/assets/yearMountPicker/demo/MonthPicker.min.css" rel="stylesheet" type="text/css" />    
+    <script src="~/assets/yearMountPicker/demo/MonthPicker.min.js"></script>
+
+    <script src="~/assets/BlockChart/css3-3d-text/jquery.text3d.js"></script>
+
+    @* <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script> *@
+    @* <script src="~/asset/dist/chart/Highcharts-9.1.2/code/highcharts.js"></script>
+    <script src="~/asset/dist/chart/Highcharts-9.1.2/code/highcharts-3d.js"></script>
+    <script src="~/asset/dist/chart/Highcharts-9.1.2/code/modules/accessibility.js"></script> *@
+    <script src="~/asset/dist/chart/Highcharts-9.0.1/code/highcharts.js"></script>
+    <script src="~/asset/dist/chart/Highcharts-9.0.1/code/highcharts-3d.js"></script>
+    <script src="~/asset/dist/chart/Highcharts-9.0.1/code/modules/accessibility.js"></script>
+    @* <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>     *@
+
+    
+
+</head>
+<body class="hold-transition sidebar-mini">
+<input type="hidden" id="sec" />
+<div class="wrapper">
+  <!-- Navbar -->
+  
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+
+
+    <!-- Sidebar -->
+    
+        <!-- Navbar -->
+        @if(@HttpContextAccessor.HttpContext.Session.GetString("_Company") == "all"){
+            <partial name="Partial/Navbar_LPS"></partial>
+            <partial name="Partial/Sidebar_LPS"></partial>
+        }else @if(@HttpContextAccessor.HttpContext.Session.GetString("_Company") == "BMW"){
+            <partial name="Partial/Navbar_BMW"></partial>
+            <partial name="Partial/Sidebar_BMW"></partial>
+        }
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+
+@RenderBody()
+ </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">
+      <b>HR Dashboard</b> 2021-04-02
+    </div>
+
+    <strong>&copy; LPS GROUP 2021 </strong> อยู่ในระหว่างพัฒนาระบบ.
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Add Content Here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+@* <script src="~/theme/plugins/jquery/jquery.min.js"></script> *@
+    <!-- jQuery UI 1.11.4 -->
+    <script src="~/theme/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+
+    <!-- Bootstrap 4 -->
+    <script src="~/theme/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- overlayScrollbars -->
+    <script src="~/theme/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/theme/dist/js/adminlte.js"></script>
+    <script src="~/js/site.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
