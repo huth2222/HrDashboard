@@ -1,3 +1,8 @@
+function GetTime(){
+    $.get(function(data){
+        //---->> ทำต่อ
+    });
+}
 function GetDeptListCom_Lps(getDate,getCom) {
     
 
